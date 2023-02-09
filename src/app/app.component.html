@@ -1,0 +1,186 @@
+
+<head>
+  
+
+ 
+  <style >
+
+ 
+    
+  h2 {
+     color: white;  
+     margin: 0rem;
+  padding:1rem 1rem;  
+    text-align:center ; 
+      font-size: 53px;
+      font-style: italic;
+      font-weight: lighter;
+    background : blueviolet ;
+     
+     
+    }
+  p {text-align:left;
+    white-space: nowrap; 
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 45px;
+    color: blueviolet; 
+  }
+  div {text-align: right;
+       display: inline-block;}
+
+  h1{text-align:right;}
+  
+
+ 
+
+  </style>
+
+  
+  </head>
+  <div class="bg"></div>
+<div class="bg bg2"></div>
+
+
+<h2 > ELECTRICITY BOARD </h2><br>
+
+ 
+
+
+ <!--..
+<input type="text" #name> enter text 
+<button  (click)="logmessage(name.value)">Log</button>
+
+<div>
+<h1 *ngIf="false ; else elseblock">
+Hi you have access</h1>
+
+<ng-template  #elseblock> 
+ <h2> i am visible </h2>
+</ng-template>
+</div>
+.--> 
+
+
+
+
+
+
+
+
+
+ 
+
+  
+<h2 class="input">
+  Filter Based on Application Date:</h2><br>
+  Start Date<input class="input" type="date" [(ngModel)]="startdate"><br>
+  End Date<input class="input" type="date" [(ngModel)]="enddate"> &nbsp;  <button  class="button-32" type="button" (click)="getapplicationdat()">  Filter by Application Date </button><br>
+  
+ 
+  
+  <div class='parent'><p class="child">List of  Applications: </p>
+    
+    <div class="child">
+      
+      <input
+     
+        type="text"
+        class="input"
+        [(ngModel)]="applicantId"
+        placeholder="Search by Applicant Id"
+      />
+      
+   
+       <span></span>
+      <button  class="button-33" type="button" (click)="searchFilter() "   [(ngModel)]="applicantId" >Search</button><br>
+    </div>
+      <div>
+       <p><span class="input" ><input  type="text " bind-disabled="isdisables"   [(ngModel)]="status" Change status ></span>
+      <button class="button-33"    (click)="updateUser(true)"  type="button" >Update status</button>
+      <div *ngIf="show">status  updated</div>
+       
+      </div>
+  </div>
+ <table  id="users"   *ngIf="dataFromServer">
+  <thead>
+    <th>ID</th>
+    <th>State</th>
+    <th>Id Number</th>
+    <th>Gender</th>
+    <th>Ownership</th>
+    <th>Pincode</th>
+    <th>District</th>
+    <th>Gov Id</th>
+    <th>Modified Date</th>
+    <th>Category</th>
+    <th>Reviewer Name</th>
+    <th>Load</th>
+    <th>Status</th>
+    <th>Reviewer Id</th>
+    <th>Date of Approval</th>
+    <th>Applicant Name</th>
+    <th>Reviewer Comments</th>
+    <th>Date of Application</th>
+  
+  </thead>
+ <tbody>>
+  <tr *ngFor="let data of dataFromServer |paginate:{
+
+    itemsPerPage:tableSize,
+    currentPage:page,
+    totalItems: count}; let i = index">
+  
+
+    <td>{{ data.id }}</td>
+    <td>{{ data.state }}</td>
+    <td>{{ data.id_Number }}</td>
+    <td>{{ data.gender }}</td>
+    <td>{{ data.ownership }}</td>
+    <td>{{ data.pincode }}</td>
+    <td>{{ data.district }}</td>
+    <td>{{ data.govtID_Type }}</td>
+    <td>{{ data.modified_Date }}</td>
+    <td>{{ data.category }}</td>
+    <td>{{ data.reviewer_Name }}</td>
+    <td>{{ data.load_Applied }}</td>
+    <td>{{ data.status}}</td>
+    <td>{{ data.reviewer_ID }}</td>
+    <td>{{ data.date_of_Approval }}</td>
+    <td>{{ data.applicant_Name }}</td>
+    <td>{{ data.reviewer_Comments }}</td>
+    <td>{{ data.date_of_Application }}</td>
+  </tr> 
+</tbody>
+  </table>
+  <div>
+    <select (change)="onTableSizechange($event)">
+    
+       <option *ngFor=" let size of tableSizes">
+        {{size}}
+       </option>
+    
+    
+    </select>
+    
+
+    <div >
+      <pagination-controls 
+        
+        previousLabel="Prev"
+        nextLabel="Next"
+     (pageChange)="onTableDatachange($event)"    
+     
+     >
+      </pagination-controls>
+     
+     
+       </div>
+    
+
+    
+    </div >
+  
+  
+
+ 
+
